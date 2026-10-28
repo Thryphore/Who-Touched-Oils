@@ -103,9 +103,9 @@
   function displayName(agent) {
     const character = (agent.characterName || "").trim();
     const account = (agent.accountName || "").trim();
-    if (character && account) return `${character} "${account}"`;
+    if (character && account) return `${character} (${account})`;
     if (character) return character;
-    if (account) return `"${account}"`;
+    if (account) return `(${account})`;
     return "Unknown";
   }
 
