@@ -125,6 +125,15 @@ a:hover {
   animation: ripple 5.5s ease-out infinite;
 }
 
+.brand-mark {
+  width: clamp(4.5rem, 10vw, 6rem);
+  height: auto;
+  border-radius: 0.55rem;
+  margin: 0 0 1.1rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  animation: rise 0.85s ease both;
+}
+
 .eyebrow {
   margin: 0 0 0.75rem;
   font-family: var(--font-brand);
