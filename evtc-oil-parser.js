@@ -101,7 +101,12 @@
   }
 
   function displayName(agent) {
-    return agent.characterName || agent.accountName || "Unknown";
+    const character = (agent.characterName || "").trim();
+    const account = (agent.accountName || "").trim();
+    if (character && account) return `${character} "${account}"`;
+    if (character) return character;
+    if (account) return `"${account}"`;
+    return "Unknown";
   }
 
   function parseEvtcBuffer(bytes, fileName) {
