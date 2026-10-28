@@ -126,9 +126,13 @@ code {
 }
 
 .brand-mark {
-  width: clamp(4rem, 8vw, 5.5rem);
+  width: clamp(4.75rem, 9vw, 6.25rem);
   height: auto;
-  margin: 0 0 0.85rem;
+  margin: 0 0 1rem;
+  border-radius: 0.85rem;
+  box-shadow:
+    0 0 0 1px rgba(26, 23, 20, 0.35),
+    0 14px 28px rgba(0, 0, 0, 0.28);
   animation: rise 0.85s ease both;
 }
 
