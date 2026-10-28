@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Who Touched Oils</title>
-  <meta name="description" content="Blish HUD module for Guild Wars 2 — after each Deimos pull, see who stepped in oils and who touched each one first." />
+  <meta name="description" content="Parse a Deimos ArcDPS log and see who stepped in oils — and who touched each one first. Same logic as the Blish HUD addon." />
   <link rel="icon" href="favicon.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="icon.png" type="image/png" sizes="512x512" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -26,50 +26,64 @@
     </div>
 
     <img class="brand-mark" src="icon.png" width="96" height="96" alt="" />
-    <p class="eyebrow">Guild Wars 2 · Deimos · Blish HUD</p>
     <h1 class="brand">Who Touched Oils</h1>
-    <p class="lede">After every Deimos pull, see who stepped in Rapid Decay — and who touched each oil first.</p>
+    <p class="lede">Drop a Deimos ArcDPS log. See who touched each oil first, and who stood in them.</p>
 
-    <div class="cta">
-      <a class="btn btn-primary" href="https://github.com/Thryphore/Who-Touched-Oils-Blish/releases/latest">Download module</a>
-      <a class="btn btn-ghost" href="https://github.com/Thryphore/Who-Touched-Oils-Blish">Source on GitHub</a>
+    <div
+      id="dropzone"
+      class="dropzone"
+      role="button"
+      tabindex="0"
+      aria-label="Upload a Deimos ArcDPS log"
+    >
+      <strong>Drop a .zevtc / .evtc here</strong>
+      <span>or click to browse — logs never leave your browser</span>
     </div>
+    <input id="file-input" type="file" accept=".zevtc,.evtc,.zip" hidden />
+    <p id="status" class="status" aria-live="polite"></p>
   </header>
 
   <main>
-    <section class="section" id="how">
-      <h2>What it shows</h2>
-      <p class="section-lede">Built for the wipe review, not the mid-fight shout.</p>
-      <ul class="beats">
-        <li>
-          <strong>First touch</strong>
-          <span>Who expanded each oil puddle first.</span>
-        </li>
-        <li>
-          <strong>Hit totals</strong>
-          <span>How many times each player stood in oil.</span>
-        </li>
-        <li>
-          <strong>Fair counts</strong>
-          <span>Downed and dead players are ignored.</span>
-        </li>
-      </ul>
+    <section id="results" class="results" hidden>
+      <p id="summary-meta" class="summary-meta"></p>
+
+      <div class="panels">
+        <article class="panel">
+          <h2>First to touch each oil</h2>
+          <ol id="first-list" class="oil-list"></ol>
+        </article>
+
+        <article class="panel">
+          <h2>Total oil hits</h2>
+          <ol id="hits-list" class="oil-list"></ol>
+        </article>
+      </div>
     </section>
 
-    <section class="section section-alt" id="install">
-      <h2>Install in a minute</h2>
-      <ol class="steps">
-        <li>Have <a href="https://blishhud.com/">Blish HUD</a> and ArcDPS logging.</li>
-        <li>Grab the latest <code>.bhm</code> from Releases.</li>
-        <li>Drop it in your Blish <code>modules</code> folder and enable <em>Deimos Oil Summary</em>.</li>
-        <li>Finish a Deimos pull — the panel appears when the log writes.</li>
-      </ol>
-      <p class="note">No ArcDPS ↔ Blish bridge required. It reads combat logs on disk.</p>
+    <section class="section blish-note" id="blish">
+      <h2>Also on Blish HUD</h2>
+      <p>
+        There is a <strong>Blish HUD addon</strong> that does the same thing in-game after each Deimos pull —
+        watching your ArcDPS log folder automatically.
+      </p>
+      <p>
+        <a id="blish-addon-link" class="btn btn-primary" href="https://YOUR-BLISH-ADDON-LINK-HERE">
+          Get the Blish HUD addon
+        </a>
+      </p>
+      <p class="note">Replace the link in <code>app.js</code> (<code>BLISH_ADDON_URL</code>) when you have a permanent download URL.</p>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Who Touched Oils · <a href="https://github.com/Thryphore/Who-Touched-Oils-Blish">Blish module</a> · <a href="https://github.com/Thryphore/Who-Touched-Oils">This site</a></p>
+    <p>
+      Who Touched Oils · same oil rules as the Blish module (skips downed/dead) ·
+      <a href="https://github.com/Thryphore/Who-Touched-Oils">source</a>
+    </p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="evtc-oil-parser.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
