@@ -1,0 +1,344 @@
+:root {
+  --stone-0: #e7e1d4;
+  --stone-1: #d4cbb8;
+  --stone-2: #b7ab95;
+  --ink: #1a1714;
+  --ink-soft: #3d372f;
+  --oil: #0b0a09;
+  --oil-sheen: #2a2420;
+  --copper: #6e8f6a;
+  --copper-deep: #4f6a4c;
+  --danger: #8b3a2f;
+  --font-brand: "Bricolage Grotesque", Georgia, serif;
+  --font-body: "Source Serif 4", Georgia, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  background:
+    radial-gradient(1200px 700px at 70% -10%, rgba(110, 143, 106, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 10% 20%, rgba(139, 58, 47, 0.08), transparent 50%),
+    linear-gradient(165deg, var(--stone-0) 0%, var(--stone-1) 48%, #cfc4ae 100%);
+  min-height: 100vh;
+}
+
+a {
+  color: var(--copper-deep);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--ink);
+}
+
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.hero-oil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.pool {
+  position: absolute;
+  border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%;
+  background:
+    radial-gradient(circle at 30% 30%, var(--oil-sheen), var(--oil) 55%),
+    var(--oil);
+  box-shadow:
+    inset 0 0 40px rgba(255, 255, 255, 0.04),
+    0 18px 40px rgba(0, 0, 0, 0.25);
+  animation: pool-breathe 9s ease-in-out infinite;
+}
+
+.pool-a {
+  width: min(52vw, 34rem);
+  height: min(38vw, 24rem);
+  right: -6%;
+  top: 18%;
+  opacity: 0.92;
+}
+
+.pool-b {
+  width: min(28vw, 16rem);
+  height: min(22vw, 12rem);
+  left: 8%;
+  bottom: 14%;
+  animation-delay: -3s;
+  opacity: 0.75;
+}
+
+.pool-c {
+  width: min(18vw, 10rem);
+  height: min(14vw, 8rem);
+  left: 42%;
+  top: 12%;
+  animation-delay: -6s;
+  opacity: 0.55;
+}
+
+.ripple {
+  position: absolute;
+  right: 12%;
+  top: 34%;
+  width: min(20vw, 12rem);
+  height: min(20vw, 12rem);
+  border: 1px solid rgba(26, 23, 20, 0.2);
+  border-radius: 50%;
+  animation: ripple 5.5s ease-out infinite;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-brand);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  animation: rise 0.9s ease both;
+}
+
+.brand {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--font-brand);
+  font-size: clamp(3.2rem, 10vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  animation: rise 1s 0.08s ease both;
+}
+
+.lede {
+  margin: 1.25rem 0 0;
+  max-width: 32rem;
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  color: var(--ink-soft);
+  animation: rise 1s 0.16s ease both;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+  animation: rise 1s 0.24s ease both;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.35rem;
+  font-family: var(--font-brand);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0.35rem;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--oil);
+  color: var(--stone-0);
+  border-color: var(--oil);
+}
+
+.btn-primary:hover {
+  background: var(--oil-sheen);
+  color: var(--stone-0);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(26, 23, 20, 0.35);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 8vw, 6rem) clamp(2rem, 6vw, 5rem);
+}
+
+.section-alt {
+  background: rgba(26, 23, 20, 0.05);
+  border-block: 1px solid rgba(26, 23, 20, 0.08);
+}
+
+.section h2 {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-lede {
+  margin: 0.6rem 0 0;
+  max-width: 34rem;
+  color: var(--ink-soft);
+}
+
+.beats {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 720px) {
+  .beats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.beats li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--oil);
+}
+
+.beats strong {
+  font-family: var(--font-brand);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.beats span {
+  color: var(--ink-soft);
+}
+
+.steps {
+  margin: 1.75rem 0 0;
+  padding-left: 1.25rem;
+  max-width: 42rem;
+}
+
+.steps li + li {
+  margin-top: 0.75rem;
+}
+
+.steps code {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.92em;
+  background: rgba(26, 23, 20, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+}
+
+.note {
+  margin: 1.5rem 0 0;
+  max-width: 40rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.footer {
+  padding: 2rem clamp(2rem, 6vw, 5rem) 3rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.footer p {
+  margin: 0;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pool-breathe {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.04) rotate(1.5deg);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.45;
+  }
+  70% {
+    opacity: 0.12;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

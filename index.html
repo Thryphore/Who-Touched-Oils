@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Who Touched Oils</title>
+  <meta name="description" content="Blish HUD module for Guild Wars 2 — after each Deimos pull, see who stepped in oils and who touched each one first." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-oil" aria-hidden="true">
+      <span class="pool pool-a"></span>
+      <span class="pool pool-b"></span>
+      <span class="pool pool-c"></span>
+      <span class="ripple"></span>
+    </div>
+
+    <p class="eyebrow">Guild Wars 2 · Deimos · Blish HUD</p>
+    <h1 class="brand">Who Touched Oils</h1>
+    <p class="lede">After every Deimos pull, see who stepped in Rapid Decay — and who touched each oil first.</p>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/Thryphore/Who-Touched-Oils-Blish/releases/latest">Download module</a>
+      <a class="btn btn-ghost" href="https://github.com/Thryphore/Who-Touched-Oils-Blish">Source on GitHub</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="how">
+      <h2>What it shows</h2>
+      <p class="section-lede">Built for the wipe review, not the mid-fight shout.</p>
+      <ul class="beats">
+        <li>
+          <strong>First touch</strong>
+          <span>Who expanded each oil puddle first.</span>
+        </li>
+        <li>
+          <strong>Hit totals</strong>
+          <span>How many times each player stood in oil.</span>
+        </li>
+        <li>
+          <strong>Fair counts</strong>
+          <span>Downed and dead players are ignored.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section section-alt" id="install">
+      <h2>Install in a minute</h2>
+      <ol class="steps">
+        <li>Have <a href="https://blishhud.com/">Blish HUD</a> and ArcDPS logging.</li>
+        <li>Grab the latest <code>.bhm</code> from Releases.</li>
+        <li>Drop it in your Blish <code>modules</code> folder and enable <em>Deimos Oil Summary</em>.</li>
+        <li>Finish a Deimos pull — the panel appears when the log writes.</li>
+      </ol>
+      <p class="note">No ArcDPS ↔ Blish bridge required. It reads combat logs on disk.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Who Touched Oils · <a href="https://github.com/Thryphore/Who-Touched-Oils-Blish">Blish module</a> · <a href="https://github.com/Thryphore/Who-Touched-Oils">This site</a></p>
+  </footer>
+</body>
+</html>
