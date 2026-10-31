@@ -7,7 +7,7 @@ Web tool that parses a Deimos ArcDPS `.zevtc` / `.evtc` log in your browser and 
 
 Same rules as the Blish HUD addon.
 
-- **Live site:** https://thryphore.github.io/Who-Touched-Oils/
+- **Live site:** https://whotouchedoils.jacobwittig.com/
 - **Blish addon repo:** https://github.com/Thryphore/Who-Touched-Oils-Blish
 
 ## Blish addon link
