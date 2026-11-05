@@ -1,8 +1,7 @@
 (function () {
   "use strict";
 
-  // Replace this when you have a permanent Blish addon download / store link.
-  const BLISH_ADDON_URL = "https://YOUR-BLISH-ADDON-LINK-HERE";
+  const BLISH_ADDON_URL = "https://blishhud.com/modules/?module=gw2.deimosoilsummary";
 
   const dropzone = document.getElementById("dropzone");
   const fileInput = document.getElementById("file-input");

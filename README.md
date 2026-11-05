@@ -8,15 +8,8 @@ Web tool that parses a Deimos ArcDPS `.zevtc` / `.evtc` log in your browser and 
 Same rules as the Blish HUD addon.
 
 - **Live site:** https://whotouchedoils.jacobwittig.com/
+- **Blish addon:** https://blishhud.com/modules/?module=gw2.deimosoilsummary
 - **Blish addon repo:** https://github.com/Thryphore/Who-Touched-Oils-Blish
-
-## Blish addon link
-
-Edit `app.js` and set:
-
-```js
-const BLISH_ADDON_URL = "https://YOUR-BLISH-ADDON-LINK-HERE";
-```
 
 ## Local preview
 
